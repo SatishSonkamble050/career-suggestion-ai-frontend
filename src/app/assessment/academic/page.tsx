@@ -24,7 +24,7 @@ export default function AcademicAssessmentPage() {
   const router = useRouter();
   // const user = getCurrentUser();
   const { user, initialLoading } = useAuth();
-  const { setAcademicData, markStepComplete, completedSteps } =
+  const {  completedSteps } =
     useAssessmentStore();
 
     console.log('Current user in AcademicAssessmentPage:', user);
@@ -93,17 +93,17 @@ export default function AcademicAssessmentPage() {
     try {
       console.log('Raw form data:', data);
       // Calculate GPA
-      const avgPercentage = calculateAveragePercentage(data.marks);
-      const gpa = calculateGPA(avgPercentage);
+      // const avgPercentage = calculateAveragePercentage(data.marks);
+      // const gpa = calculateGPA(avgPercentage);
 
-      const academicData = {
-        ...data,
-        gpa,
-        marks: data.marks.map((m) => ({
-          ...m,
-          percentage: (m.marks / m.maxMarks) * 100,
-        })),
-      };
+      // const academicData = {
+      //   ...data,
+      //   gpa,
+      //   marks: data.marks.map((m) => ({
+      //     ...m,
+      //     percentage: (m.marks / m.maxMarks) * 100,
+      //   })),
+      // };
 
       const classs:any = data.currentClass;
       const playload = {
