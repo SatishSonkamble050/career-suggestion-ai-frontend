@@ -15,6 +15,7 @@ import { Download, TrendingUp, Users, Award, MapPin } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
+import PageLoader from '@/components/ui/page-loader';
 
 export default function ReportPage() {
   const router = useRouter();
@@ -43,7 +44,7 @@ export default function ReportPage() {
   }, [user, initialLoading, router]);
 
   if(initialLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />;
   }
 
   if (!user || !mount) {

@@ -16,6 +16,7 @@ import { toast } from 'sonner';
 import type { SkillRating } from '@/types';
 import { useAuth } from '@/hooks';
 import { submitSkillData } from '@/services/allApiServices';
+import PageLoader from '@/components/ui/page-loader';
 
 export default function SkillsAssessmentPage() {
   const router = useRouter();
@@ -40,7 +41,7 @@ const {user, initialLoading} = useAuth();
   }, [user, router]);
 
   if (initialLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />;
   }
 
   if (!user) {

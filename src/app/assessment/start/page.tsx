@@ -10,6 +10,7 @@ import { getCurrentUser } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, Clock, Zap } from 'lucide-react';
 import { useAuth } from '@/hooks';
+import PageLoader from '@/components/ui/page-loader';
 
 export default function AssessmentStartPage() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function AssessmentStartPage() {
   }, [user, initialLoading, router]);
 
   if (initialLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />;
   }
 
   if (!user) {

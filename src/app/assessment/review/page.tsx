@@ -18,6 +18,7 @@ import { submitFinalReport, submitFinalReport2 } from '@/services/allApiServices
 import { useStudentData } from '@/hooks/useStudentData';
 import { error } from 'console';
 import { convertStudentProfile } from '@/lib/conver';
+import PageLoader from '@/components/ui/page-loader';
 
 export default function ReviewPage() {
   const router = useRouter();
@@ -59,7 +60,7 @@ export default function ReviewPage() {
   }, [data]);
 
   if (initialLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />;
   }
 
   if (!user) {
@@ -127,7 +128,7 @@ export default function ReviewPage() {
   };
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />;
   }
 
   return (
