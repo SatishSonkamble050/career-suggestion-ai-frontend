@@ -15,6 +15,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { toast } from 'sonner';
 import { submitInterestData } from '@/services/allApiServices';
 import { useAuth, useStudentData } from '@/hooks';
+import PageLoader from '@/components/ui/page-loader';
 
 export default function InterestsAssessmentPage() {
   const router = useRouter();
@@ -34,7 +35,7 @@ export default function InterestsAssessmentPage() {
   }, [user, initialLoading, router]);
 
   if (initialLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />
   }
 
   const question = MOCK_INTEREST_QUESTIONS[currentQuestion];

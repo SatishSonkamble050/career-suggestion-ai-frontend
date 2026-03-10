@@ -21,6 +21,10 @@ export const metadata: Metadata = {
     url: 'https://careerguide-ai.com',
     siteName: 'CareerGuide AI',
   },
+   icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

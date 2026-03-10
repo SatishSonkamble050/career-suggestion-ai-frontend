@@ -14,6 +14,7 @@ import { toast } from 'sonner';
 import type { Preferences } from '@/types';
 import { useAuth } from '@/hooks';
 import { submitCareerPreferences } from '@/services/allApiServices';
+import PageLoader from '@/components/ui/page-loader';
 
 interface PreferenceOption {
   id: string;
@@ -44,7 +45,7 @@ export default function PreferencesAssessmentPage() {
   }, [user, initialLoading, router]);
 
   if (initialLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />;
   }
 
   if (!user) {

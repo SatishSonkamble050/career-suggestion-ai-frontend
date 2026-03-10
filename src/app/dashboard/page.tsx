@@ -13,6 +13,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Clock, AlertCircle } from 'lucide-react';
 import { useAuth } from '@/hooks';
 import { set } from 'react-hook-form';
+import PageLoader from '@/components/ui/page-loader';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -32,7 +33,7 @@ export default function DashboardPage() {
   }, [user, initialLoading, router]);
 
   if (initialLoading) {
-    return <p>Loading...</p>;
+    return <PageLoader />;
   }
 
   if (!user) {
