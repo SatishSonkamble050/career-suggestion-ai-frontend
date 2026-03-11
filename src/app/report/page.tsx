@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter  } from 'next/navigation';
 import Link from 'next/link';
 import { Navbar } from '@/components/layout/Navbar';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card';
@@ -22,7 +22,7 @@ export default function ReportPage() {
   const reportRef = useRef<HTMLDivElement>(null);
   // const user = getCurrentUser();
   const { user, initialLoading } = useAuth();
-  const { careerReport } = useAssessmentStore();
+  const { careerReport, setCareerReport } = useAssessmentStore();
   const [mount, setMount] = useState(false);
 
   const handleDownload = () => {
@@ -40,6 +40,9 @@ export default function ReportPage() {
       router.push('/login');
     } else {
       setMount(true);
+      if(!careerReport){
+        router.push("/dashboard")
+      }
     }
   }, [user, initialLoading, router]);
 

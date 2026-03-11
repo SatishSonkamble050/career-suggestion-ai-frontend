@@ -22,6 +22,8 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false, showAuth = 
   //const user = getCurrentUser();
   const { user } = useAuth();
   const handleLogout = () => {
+    // localStorage.removeItem('token');
+    localStorage.removeItem('user');
     mockLogout();
     router.push('/');
   };
@@ -57,11 +59,11 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false, showAuth = 
                     Assessment
                   </Button>
                 </Link>
-                <Link href="/profile">
+                {/* <Link href="/profile">
                   <Button variant="ghost" size="sm">
                     Profile
                   </Button>
-                </Link>
+                </Link> */}
               </>
             )}
           </div>
@@ -96,11 +98,11 @@ export const Navbar: React.FC<NavbarProps> = ({ transparent = false, showAuth = 
 
             {showAuth && user && (
               <div className="hidden sm:flex gap-2">
-                <Link href="/settings">
+                {/* <Link href="/settings">
                   <Button variant="ghost" size="icon">
                     <Settings className="h-5 w-5" />
                   </Button>
-                </Link>
+                </Link> */}
                 <Button variant="ghost" size="icon" onClick={handleLogout}>
                   <LogOut className="h-5 w-5" />
                 </Button>
