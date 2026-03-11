@@ -124,7 +124,7 @@ export const useAssessmentStore = create<AssessmentStore>()(
         currentStep: state.currentStep,
         completedSteps: state.completedSteps,
         assessmentComplete: state.assessmentComplete,
-        careerReport: state.careerReport,
+        // careerReport: state.careerReport,
       }),
     }
   )
