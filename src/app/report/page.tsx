@@ -16,6 +16,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { useAuth } from '@/hooks/useAuth';
 import { toast } from 'sonner';
 import PageLoader from '@/components/ui/page-loader';
+import CareerReportPDF from '@/lib/CareerReportPDF';
+import { pdf } from '@react-pdf/renderer';
+import { saveAs } from 'file-saver'
 
 export default function ReportPage() {
   const router = useRouter();
@@ -25,15 +28,25 @@ export default function ReportPage() {
   const { careerReport, setCareerReport } = useAssessmentStore();
   const [mount, setMount] = useState(false);
 
-  const handleDownload = () => {
-    if (reportRef.current) {
-      const fileName = `career-report-${new Date().toISOString().split('T')[0]}.pdf`;
-      downloadReportAsPDF(reportRef.current, fileName);
-      toast.success('Report downloading as PDF...');
-    } else {
-      toast.error('Could not generate report');
-    }
-  };
+  // const handleDownload = () => {
+  //   if (reportRef.current) {
+  //     const fileName = `career-report-${new Date().toISOString().split('T')[0]}.pdf`;
+  //     downloadReportAsPDF(reportRef.current, fileName);
+  //     toast.success('Report downloading as PDF...');
+  //   } else {
+  //     toast.error('Could not generate report');
+  //   }
+  // };
+
+  const handleDownload = async () => {
+
+  const blob = await pdf(
+    <CareerReportPDF report={careerReport} />
+  ).toBlob();
+
+  saveAs(blob, "career-report.pdf");
+
+};
 
   useEffect(() => {
     if (!user && !initialLoading) {
@@ -121,7 +134,7 @@ export default function ReportPage() {
           </motion.div>
 
           {/* Report Content */}
-          <div ref={reportRef}>
+          <div ref={reportRef}  >
 
           {/* Top Careers Section */}
           <motion.div
@@ -129,6 +142,7 @@ export default function ReportPage() {
             initial="hidden"
             animate="show"
             className="space-y-6 mb-8"
+           
           >
             <motion.div variants={item}>
               <h2 className="text-2xl font-bold mb-4">Top Career Recommendations</h2>
