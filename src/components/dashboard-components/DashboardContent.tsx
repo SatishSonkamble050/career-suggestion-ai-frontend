@@ -126,7 +126,7 @@ export default function DashboardContent({
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <AlertCircle className="h-5 w-5 text-purple-500" />
-                    Your Career Report
+                    Your Career Report ggg
                   </CardTitle>
                 </CardHeader>
 
