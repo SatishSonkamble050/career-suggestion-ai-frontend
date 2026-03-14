@@ -4,7 +4,7 @@ const endpoints = {
     submitAcademicData: '/v1/academic-profiles/student',
     submitSingleSkillRating: '/v1/skills/',
     submitInterests: '/v1/interests/',
-    submitCarrerPreferences: '/v1/career-preferences',
+    submitCarrerPreferences: '/v1/career-preferences/',
     PostfinalReprot : '/agents/simple/career-guide',
     PostfinalReprot2 : '/agents/simple/career/suggest',
     // get academic data, skill ratings, interest responses, and career preferences
